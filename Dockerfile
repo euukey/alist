@@ -9,6 +9,8 @@ FROM alpine:edge
 LABEL MAINTAINER="i@nn.ci"
 VOLUME /opt/alist/data/
 WORKDIR /opt/alist/
+ENV DB_TYPE mysql
+ENV DB_SLL_MODE require
 COPY --from=builder /app/bin/alist ./
 COPY entrypoint.sh /entrypoint.sh
 RUN apk add --no-cache bash ca-certificates su-exec tzdata; \
